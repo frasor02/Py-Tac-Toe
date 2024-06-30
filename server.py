@@ -1,8 +1,8 @@
 import socket
 from _thread import *
 import pickle
-from random import randint
 import traceback
+import os
 from tic_tac_toe import TicTacToe_Server
 
 BUFSIZE = 2048
@@ -18,7 +18,7 @@ YELLOW = (255, 255, 0)
 class Server:
     def __init__(self):
         self.server = ''
-        self.port = 5050
+        self.port = 10000 or os.environ['PORT']
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         try:

@@ -102,8 +102,9 @@ class Game:
         
 
     def multiplayer(self):
-        self.screen = pg.display.set_mode([WIN_SIZE + 500, WIN_SIZE])        
-        network = Network('', 5050) # Connection to server
+        self.screen = pg.display.set_mode([WIN_SIZE + 500, WIN_SIZE])
+        port = 10000 or os.environ['PORT']
+        network = Network('', port) # Connection to server
         if network.get_player() == None: # If connection to server fails (i.e. server offline) remain in main menu
             self.run()
             print("no player")
